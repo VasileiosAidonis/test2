@@ -1,13 +1,10 @@
-#######################################################################
-#            Laravel/Lumen 5.8 Application - Dockerfile v0.5          #
-#######################################################################
 
 #------------- Setup Environment -------------------------------------------------------------
 
 # Pull base image
 FROM ubuntu:16.04
 
-# Install common tools 
+# Install common tools
 RUN apt-get update
 RUN apt-get install -y wget curl nano htop git unzip bzip2 software-properties-common locales
 
@@ -17,8 +14,8 @@ ENV TERM=xterm
 # Set working directory
 WORKDIR /var/www/html
 
-# Set up locales 
-# RUN locale-gen 
+# Set up locales
+# RUN locale-gen
 
 #------------- Application Specific Stuff ----------------------------------------------------
 
@@ -26,18 +23,18 @@ WORKDIR /var/www/html
 RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
 RUN apt update
 RUN apt-get install -y \
-    php7.2-fpm \ 
-    php7.2-common \ 
-    php7.2-curl \ 
-    php7.2-mysql \ 
-    php7.2-mbstring \ 
+    php7.2-fpm \
+    php7.2-common \
+    php7.2-curl \
+    php7.2-mysql \
+    php7.2-mbstring \
     php7.2-json \
     php7.2-xml \
     php7.2-bcmath
 
 # Install NPM and Node.js
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
-RUN apt-get install -y nodejs 
+RUN apt-get install -y nodejs
 
 #------------- FPM & Nginx configuration ----------------------------------------------------
 
