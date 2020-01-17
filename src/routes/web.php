@@ -28,6 +28,10 @@ $router->delete('/billings/{billing}', 'BillingController@destroy');
 */
 $router->get('/billings1', 'BillingController@views');
 
+$router->get('/{route:.*}/', function ()  {
+    return view('index');
+});
+
 //$router->get('/billing1', function ()  {
 //    return view('billing');
 //});
