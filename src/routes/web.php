@@ -14,9 +14,7 @@
 $router->get('/billings', 'BillingController@index');
 
 // Create the data
-$router->get('/billings/create', [
-    'as' => 'billings', 'uses' => 'BillingController@create'
-]);
+$router->get('/billings/create', 'BillingController@create');
 $router->post('/billings', 'BillingController@store');
 $router->get('/billings/{billing}', 'BillingController@show');
 $router->put('/billings/{billing}', 'BillingController@update');
@@ -26,7 +24,8 @@ $router->delete('/billings/{billing}', 'BillingController@destroy');
 /**
 * Route for Views
 */
-$router->get('/billings1', 'BillingController@views');
+$router->get('/billings1', [
+    'as' => 'billings', 'uses' => 'BillingController@views']);
 
 $router->get('/{route:.*}/', function ()  {
     return view('index');
